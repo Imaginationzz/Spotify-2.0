@@ -1,0 +1,954 @@
+<html>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <script
+        src="https://kit.fontawesome.com/76529b9fc9.js"
+        crossorigin="anonymous"
+      ></script>
+      <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous"
+      />
+      <link rel="stylesheet" href="./style.css" />
+      <!--OUR STYLING--->
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <!---FONT IMPORTING-->
+    </head>
+
+    <body class="spotify-album-bg">
+      <div class="row" style="width: 100vw; margin: 0">
+        <!--------------------------------------SIDEBAR---------------------------------------------------------->
+        <div
+          class="spotify-bg-sidebar2 d-flex d-md-none justify-content-around"
+          style="
+            z-index: 3;
+            width: 104%;
+            background-color: var(--playbar_bg);
+            bottom: 12vh;
+            position: fixed;
+          "
+        >
+          <a class="pl-4 mb-2" href="./Homepage2.html">
+            <div
+              class="spotify-text-primary d-flex align-items-center justify-content-center flex-column pt-1"
+            >
+              <i class="fas fa-home fa-2x mt-3 mb-1"></i>
+              <h6>Home</h6>
+            </div>
+          </a>
+          <a class="pl-4 mb-2 linkBorde" href="">
+            <div
+              class="spotify-text-primary spotify-text-secondary d-flex align-items-center justify-content-center flex-column pt-1"
+            >
+              <i class="fas fa-search fa-2x mt-3 mb-1"></i>
+              <h6>Search</h6>
+            </div>
+          </a>
+          <a class="pl-4 mb-2 r" href="./artist.html">
+            <div
+              class="spotify-text-primary d-flex align-items-center justify-content-center flex-column pt-1"
+            >
+              <i class="fas fa-swatchbook fa-2x mt-3 mb-1"></i>
+              <h6>Your Library</h6>
+            </div>
+          </a>
+        </div>
+        <div
+          class="d-none d-md-block col-md-2 spotify-bg-sidebar"
+          style="
+            position: sticky;
+            top: 0;
+            height: 89.5vh;
+            background-color: #010102;
+          "
+        >
+          <div class="my-3 d-flex align-items-center">
+            <img
+              class="ml-4"
+              src="assets/spologo.png"
+              alt="Spotify"
+              width="55%"
+            />
+          </div>
+          <div class="d-flex flex-column">
+            <a class="pl-4 mb-2" href="./Homepage2.html">
+              <span class="spotify-text-primary d-flex flex-row pt-1">
+                <i class="fas fa-home mr-3"></i>
+                <h6>Home</h6>
+              </span>
+            </a>
+            <a class="pl-4 mb-2" href="#">
+              <span class="spotify-text-primary d-flex flex-row pt-1">
+                <i class="fas fa-search mr-3"></i>
+                <h6>Search</h6>
+              </span>
+            </a>
+            <a class="pl-4 mb-2" href="./artist.html" target="blank">
+              <span class="spotify-text-primary d-flex flex-row pt-1">
+                <i class="fas fa-swatchbook mr-3"></i>
+                <h6>Your Library</h6>
+              </span>
+            </a>
+          </div>
+          <div class="mb-3 px-4">
+            <a class="spotify-text-primary" href="#">
+              <span
+                class="d-flex flex-row border-bottom border-secondary mr-4 pb-2"
+              >
+                <i class="far fa-arrow-alt-circle-down fa-2x mr-3"></i>
+                <h6 class="pt-1">Install App</h6>
+              </span></a
+            >
+            <span class="d-flex flex-row">
+              <img
+                class="rounded-circle mt-2"
+                src="data:image/png;base64,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"
+                width="50vw;"
+                height="50vw"
+              />
+              <h6 class="ml-3 pt-3 spotify-text-secondary">Strive Student</h6>
+            </span>
+          </div>
+        </div>
+        <!--------------------------------------ALBUM COVER AND INFO---------------------------------------------------------->
+
+        <div class="col-12 col-md-10" style="height: 100vh" id="bigcol">
+          <img
+            class="spotify-album-shadow"
+            id="placeholder"
+            src="https://placehold.it/300x300"
+            style="position: absolute; left: 8.3vw; top: 40px"
+            width="300px"
+          />
+          <div
+            class="text-center"
+            style="
+              color: white;
+              width: 300px;
+              position: absolute;
+              top: 360px;
+              left: 8.3vw;
+              font-size: 20pt;
+              font-weight: bold;
+              font-family: Cabin;
+            "
+          >
+            <div id="bigtitle">Album Title</div>
+            <div
+              style="font-size: 11pt; font-weight: normal"
+              class="spotify-text-primary"
+              id="bigartist"
+            >
+              Artist Name
+            </div>
+
+            <button
+              class="btn spotify-btn-green mt-4 rounded-pill"
+              style="width: 150px; padding: 8px"
+              onclick="playPause()"
+            >
+              PLAY
+            </button>
+
+            <div
+              style="font-size: 9pt; font-weight: normal"
+              class="spotify-text-primary pt-2"
+            >
+              <div class="d-inline px-1" id="year">0000</div>
+              •
+              <div class="d-inline px-1" id="numberoftracks">SONGS</div>
+            </div>
+            <div
+              class="d-flex justify-content-around px-4"
+              style="
+                width: 150px;
+                margin-top: 15px;
+                position: absolute;
+                left: 78px;
+              "
+            >
+              <div>
+                <svg
+                  width=".7em"
+                  height=".7em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-heart-fill mx-3"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <svg
+                  width=".9em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-three-dots mx-3"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                  />
+                </svg>
+              </div>
+              <form class="form-inline">
+                <select
+                  class="custom-select my-1 mr-sm-2"
+                  id="albumselect"
+                  style="
+                    width: 150px;
+                    padding: 8px;
+                    font-size: 10pt;
+                    background-color: var(--playbar_bg);
+                    color: white;
+                    position: absolute;
+                    top: 40px;
+                    left: 10px;
+                  "
+                >
+                  <option selected>Choose an Album</option>
+                  <option value="0">Queen</option>
+                  <option value="1">Queen II</option>
+                </select>
+              </form>
+            </div>
+          </div>
+
+          <!-----------------------------------------------TRACKLIST------------------------------------------------------------------->
+          <div
+            class="d-block"
+            style="height: 89%; overflow-y: scroll"
+            id="trackbox"
+          >
+            <div
+              class="d-block"
+              style="
+                width: 50vw;
+                right: 200px;
+                margin-top: 40px;
+                margin-left: 490px;
+              "
+              id="tracklist"
+            >
+              <div
+                class="d-flex col justify-content-between spotify-text-primary"
+                id="song"
+              >
+                <div>
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-music"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                  <div
+                    style="
+                      font-weight: bold;
+                      position: absolute;
+                      top: -3px;
+                      left: 25px;
+                    "
+                    class="col text-light"
+                    id="title"
+                  >
+                    Song Title
+                  </div>
+                  <div
+                    style="
+                      font-size: 11pt;
+                      font-weight: normal;
+                      position: absolute;
+                      left: 40px;
+                      top: 20px;
+                    "
+                    class="spotify-text-primary"
+                    id="artist"
+                  >
+                    Artist
+                  </div>
+                </div>
+                <div style="font-size: 9pt" id="duration">00:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------------------------------------------------------------PLAYBAR------------------------------------------------------------------------------------------->
+      <div
+        class="spotify-bg-playbar d-flex d-md-none justify-content-around"
+        style="
+          z-index: 2;
+          width: 100%;
+          height: 12vh;
+          background-color: var(--playbar_bg);
+          position: fixed;
+          bottom: 0;
+        "
+      >
+        <div
+          class="row"
+          style="
+            height: 12vh;
+            width: 100vw;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          "
+        >
+          <div class="col-3">
+            <img
+              src="/assets/91Ph+uTyyxL._AC_SL1500_.jpg"
+              style="height: 12vh; bottom: 0"
+            />
+          </div>
+
+          <div class="col">
+            <div
+              style="
+                color: white;
+                width: 30vw;
+                position: absolute;
+                top: 1vh;
+                font-weight: bold;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 15pt;
+              "
+            >
+              Bohemian Rapsody
+            </div>
+            <div
+              class="d-flex"
+              style="
+                color: var(--playbar_light);
+                position: absolute;
+
+                top: 6vh;
+                font-size: 15pt;
+              "
+            >
+              Queen
+            </div>
+          </div>
+        </div>
+        <div
+          class="col"
+          style="position: absolute; left: 50vw; bottom: 1vh; height: 12vh"
+        >
+          <svg
+            width="2em"
+            height="3em"
+            viewBox="0 0 16 16"
+            class="bi bi-heart d-block"
+            style="
+              position: absolute;
+              top: 31px;
+              left: 50px;
+              bottom: 2vh;
+              padding: 1vw;
+            "
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+            />
+          </svg>
+          <svg
+            width="2em"
+            height="3em"
+            viewBox="0 0 16 16"
+            class="bi bi-pip"
+            fill="white"
+            style="position: absolute; top: 31px; left: 100px; padding: 1vw"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"
+            />
+            <path
+              d="M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3z"
+            />
+          </svg>
+          <script>
+            /*  const play = function () {
+
+                            audio.play();
+                            document.getElementById("playMob").classList.add("d-none")
+                            document.getElementById("playPC").classList.add("d-none")
+                            document.getElementById("pauseMob").classList.remove("d-none")
+                            document.getElementById("pauseMob").classList.add("d-block")
+                            document.getElementById("pausePC").classList.remove("d-none")
+                            document.getElementById("pausePC").classList.add("d-block")
+                        }
+                        const stopA = function () {
+                            const audio = document.getElementById("audio");
+                            audio.pause()
+                            document.getElementById("pauseMob").classList.remove("d-block")
+                            document.getElementById("pausePC").classList.remove("d-block")
+                            document.getElementById("pauseMob").classList.add("d-none")
+                            document.getElementById("pausePC").classList.add("d-none")
+
+                        } */
+
+            const playPause = function () {
+              const audio = document.getElementById("audio");
+              if (audio.paused) {
+                audio.play();
+                document.getElementById("playMob").classList.add("d-none");
+                document.getElementById("playPC").classList.add("d-none");
+                document.getElementById("pauseMob").classList.remove("d-none");
+                document.getElementById("pauseMob").classList.add("d-block");
+                document.getElementById("pausePC").classList.remove("d-none");
+                document.getElementById("pausePC").classList.add("d-block");
+              } else {
+                audio.pause();
+                document.getElementById("pauseMob").classList.remove("d-block");
+                document.getElementById("pausePC").classList.remove("d-block");
+                document.getElementById("pauseMob").classList.add("d-none");
+                document.getElementById("pausePC").classList.add("d-none");
+                document.getElementById("playMob").classList.remove("d-none");
+                document.getElementById("playPC").classList.remove("d-none");
+              }
+            };
+          </script>
+
+          <audio
+            id="audio"
+            src="./assets/Queen_Bohemian_Rhapsody_with_lyrics_.mp3"
+          ></audio>
+          <svg
+            width="2.5em"
+            height="3em"
+            viewBox="0 0 16 16"
+            class="bi bi-play-fill"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+            style="position: absolute; top: 31px; left: 150px"
+            onclick="playPause()"
+            id="playMob"
+          >
+            <path
+              d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+            />
+          </svg>
+
+          <svg
+            width="2.5em"
+            height="2.5em"
+            viewBox="0 0 16 16"
+            class="bi bi-pause-fill d-none"
+            fill="white"
+            xmlns="http://www.w3.org/2000/svg"
+            style="position: absolute; top: 31px; left: 150px"
+            onclick="playPause()"
+            id="pauseMob"
+          >
+            <path
+              d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-------------------------------------------PLAYING------------------------------------------>
+      <div
+        class="spotify-bg-playbar spotify-pb-text-light d-flex justify-content-around"
+        style="
+          position: fixed;
+          bottom: 0;
+          width: 100vw;
+          height: 100px;
+          padding: 0.5vh;
+        "
+      >
+        <div
+          class="d-none d-md-flex col-md-2"
+          style="position: absolute; left: 15px; top: 15px"
+        >
+          <div class="row" style="width: 25vw">
+            <div class="col">
+              <img
+                src="./assets/91Ph+uTyyxL._AC_SL1500_.jpg"
+                style="position: absolute; left: 10px; width: 8.5vh"
+              />
+              <div
+                style="
+                  width: 200px;
+                  position: absolute;
+                  left: 120px;
+                  top: 1vh;
+                  font-weight: bold;
+                  white-space: nowrap;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                "
+              >
+                Bohemian Rapsody
+              </div>
+              <div
+                class="d-flex"
+                style="
+                  position: absolute;
+                  left: 120px;
+                  top: 3.5vh;
+                  font-size: 10pt;
+                "
+              >
+                Queen
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--------------------------------------------CONTROLS----------------------------------------------->
+
+        <div
+          class="d-none d-md-flex justify-content-around align-items-center d-none d-md-block col-md-2"
+          style="width: 200px; position: absolute; top: 15%"
+        >
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-shuffle"
+            fill="var(--playbar_light)"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"
+            />
+            <path
+              d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"
+            />
+          </svg>
+          <svg
+            width="1.2em"
+            height="1.2em"
+            viewBox="0 0 16 16"
+            class="bi bi-skip-start-fill"
+            fill="var(--playbar_light)"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.5 3.5A.5.5 0 0 0 4 4v8a.5.5 0 0 0 1 0V4a.5.5 0 0 0-.5-.5z"
+            />
+            <path
+              d="M4.903 8.697l6.364 3.692c.54.313 1.232-.066 1.232-.697V4.308c0-.63-.692-1.01-1.232-.696L4.903 7.304a.802.802 0 0 0 0 1.393z"
+            />
+          </svg>
+          <div
+            class="d-flex align-items-center justify-content-center"
+            style="
+              width: 2em;
+              height: 2em;
+              border-style: solid;
+              border-width: 1px;
+              border-radius: 50%;
+              border-color: var(--playbar_light);
+            "
+            onclick="playPause()"
+          >
+            <svg
+              width="1.2em"
+              height="1.2em"
+              viewBox="0 0 16 16"
+              class="bi bi-play-fill"
+              fill="var(--playbar_light)"
+              xmlns="http://www.w3.org/2000/svg"
+              id="playPC"
+            >
+              <path
+                d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+              />
+            </svg>
+            <svg
+              width="1.2em"
+              height="1.2em"
+              viewBox="0 0 16 16"
+              class="bi bi-pause-fill d-none"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              onclick="stopA()"
+              id="pausePC"
+            >
+              <path
+                d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
+              />
+            </svg>
+          </div>
+
+          <svg
+            width="1.2em"
+            height="1.2em"
+            viewBox="0 0 16 16"
+            class="bi bi-skip-end-fill"
+            fill="var(--playbar_light)"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M12 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"
+            />
+            <path
+              d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+            />
+          </svg>
+          <img
+            class="img-fluid"
+            src="assets/Playback-repeat-01.png"
+            style="width: 1em"
+          />
+        </div>
+
+        <!----------------------------------------PROGRESS BAR-------------------------------------------------->
+        <div class="d-none d-md-flex justify-content-center">
+          <div style="position: absolute; top: 70%; left: 25%">
+            <div
+              class="d-flex"
+              style="
+                position: absolute;
+                position: absolute;
+                top: -5px;
+                left: -40px;
+                font-size: 8pt;
+              "
+            >
+              0:00
+            </div>
+            <div
+              class="progress spotify-bg-playbar-dark"
+              style="height: 3px; width: 50vw"
+            >
+              <div
+                class="progress-bar spotify-bg-playbar-light"
+                role="progressbar"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style="width: 50%"
+              ></div>
+            </div>
+            <div
+              class="d-flex"
+              style="
+                position: absolute;
+                top: -5px;
+                right: -40px;
+                font-size: 8pt;
+              "
+            >
+              0:00
+            </div>
+          </div>
+        </div>
+        <div
+          class="d-none d-md-flex"
+          style="position: absolute; right: 20px; top: 45%"
+        >
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-volume-up-fill"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            style="position: absolute; left: -25px; top: -5px"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zM6 5.04L4.312 6.39A.5.5 0 0 1 4 6.5H2v3h2a.5.5 0 0 1 .312.11L6 10.96V5.04z"
+            />
+            <path
+              d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"
+            />
+            <path
+              d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"
+            />
+          </svg>
+          <div
+            class="progress spotify-bg-playbar-dark"
+            style="height: 3px; width: 90px"
+          >
+            <div
+              class="progress-bar spotify-bg-playbar-light"
+              role="progressbar"
+              aria-valuenow="100"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 100%"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <script src="borders.js"></script>
+      <script>
+        const albums = [
+          {
+            title: "Queen",
+            author: "Queen",
+            year: "1973",
+            tracklist: [
+              {
+                name: "Keep Yourself Alive",
+                duration: "3:47",
+              },
+              {
+                name: "Doing All Right",
+                duration: "4:10",
+              },
+              {
+                name: "Great King Rat",
+                duration: "5:43",
+              },
+              {
+                name: "My Fairy King",
+                duration: "4:13",
+              },
+              {
+                name: "Liar",
+                duration: "6:25",
+              },
+              {
+                name: "The Night Comes Down",
+                duration: "4:23",
+              },
+              {
+                name: "Modern Times Rock 'n' Roll",
+                duration: "1:48",
+              },
+              {
+                name: "Son and Daughter",
+                duration: "3:23",
+              },
+              {
+                name: "Jesus",
+                duration: "3:44",
+              },
+              {
+                name: "Seven Seas of Rhye",
+                duration: "1:17",
+              },
+            ],
+          },
+          {
+            title: "Queen II (Deluxe Edition 2011 Remaster)",
+            author: "Queen",
+            year: "1974",
+            tracklist: [
+              {
+                name: "Procession - Remaster 2011",
+                duration: "1:13",
+              },
+              {
+                name: "Father To Son - Remaster 2011",
+                duration: "6:13",
+              },
+              {
+                name: "White Queen (As It Began) - Remaster 2011",
+                duration: "4:33",
+              },
+              {
+                name: "Some Day One Day - Remaster 2011",
+                duration: "4:22",
+              },
+              {
+                name: "Ogre Battle - Remaster 2011",
+                duration: "4:08",
+              },
+              {
+                name: "The Fairy Feller's Master-Stroke - Remaster 2011",
+                duration: "2:40",
+              },
+              {
+                name: "Nevermore - Remaster 2011",
+                duration: "1:18",
+              },
+              {
+                name: "The March Of The Black Queen - Remaster 2011",
+                duration: "6:32",
+              },
+              {
+                name: "Funny How Love Is - Remaster 2011",
+                duration: "2:49",
+              },
+              {
+                name: "Seven Seas of Rhye - Remaster 2011",
+                duration: "2:48",
+              },
+              {
+                name:
+                  "See What A Fool I've Been - Live BBC Session, London / July 1973 / 2011 Remix",
+                duration: "4:22",
+              },
+              {
+                name:
+                  "White Queen (As it Began) - Live At Hammersmith Odeon, London / December 1975",
+                duration: "5:32",
+              },
+              {
+                name: "Seven Seas of Rhye - Instrumental Mix",
+                duration: "3:09",
+              },
+              {
+                name: "Nevermore - BBC Session, April 1974",
+                duration: "1:27",
+              },
+              {
+                name:
+                  "See What a Fool I've Been - B-side Version, February 1974",
+                duration: "4:31",
+              },
+            ],
+          },
+        ];
+
+        let select = document.getElementsByTagName("select")[0];
+        select.onchange = function (e) {
+          let mother = document.getElementById("trackbox");
+
+          let value = e.currentTarget.value;
+          //dont' touch the code above
+          let tn = albums[value].tracklist.length;
+          console.log(tn);
+          let tracklistN = document.getElementById("tracklist");
+          let year = (document.getElementById("year").innerText =
+            albums[value].year);
+          let numberoftracks = (document.getElementById(
+            "numberoftracks"
+          ).innerText = tn + " TRACKS");
+          let bigtitle = (document.getElementById("bigtitle").innerText =
+            albums[value].title);
+          let bigartist = (document.getElementById("bigartist").innerText =
+            albums[value].author);
+
+          /*OLD CODE FOR FURTHER REFERENCE  for (let i = 0; i < tn; i++) {
+
+                        document.getElementById("title").innerText = albums[value].tracklist[i].name
+                        document.getElementById("duration").innerText = albums[value].tracklist[i]
+                            .duration
+                        document.getElementById("artist").innerText = albums[value].author
+                        mother.insertBefore(tracklistN.cloneNode(true), mother.childNodes[tn]);
+                    }
+                    mother.removeChild(mother.firstChild)
+
+                    NEW CODE FROM STEFANO CASASOLA :) 
+                    Right approach: 
+                        empty the default tracklist node and then fill it again so IDs don't get doubled and tracks refresh everytime we change album. 
+*/
+
+          tracklistN.innerHTML = "";
+          for (let i = 0; i < tn; i++) {
+            tracklistN.innerHTML += `
+              <div
+                class="d-flex col justify-content-between spotify-text-primary mb-3 pb-3"
+              >
+                <div>
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-music"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"
+                    />
+                    <path fill-rule="evenodd" d="M9 3v10H8V3h1z" />
+                    <path
+                      d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"
+                    />
+                  </svg>
+                  <div
+                    style="
+                      font-weight: bold;
+                      position: absolute;
+                      top: -3px;
+                      left: 25px;
+                    "
+                    class="col text-light"
+                  >
+                    ${albums[value].tracklist[i].name}
+                  </div>
+                  <div
+                    style="
+                      font-size: 11pt;
+                      font-weight: normal;
+                      position: absolute;
+                      left: 40px;
+                      top: 15px;
+                      padding-bottom: 40px
+                    "
+                    class="spotify-text-primary"
+                  >
+                    ${albums[value].author}
+                  </div>
+                </div>
+                <div style="font-size: 9pt;">${albums[value].tracklist[i].duration}</div>
+              </div>
+              `;
+          }
+
+          if (value == 0)
+            document
+              .getElementById("placeholder")
+              .setAttribute("src", "assets/queen1.jpg");
+          if (value == 1)
+            document
+              .getElementById("placeholder")
+              .setAttribute("src", "assets/queen2.jpg");
+        };
+      </script>
+
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"
+      ></script>
+    </body>
+  </html>
+</html>
