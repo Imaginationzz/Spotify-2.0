@@ -105,14 +105,25 @@ const fetcher = (array)=>{
           tracks[b].addEventListener('click', function(){
             if(audio[b].paused){
               audio[b].play()
+              playerImg.style.animation = 'rotation 1s infinite'
             }
             else{
               audio[b].pause()
+              playerImg.style.animation = 'none'
             }
             playerImg.src = trackImg[b].src
             playerTitle.innerText = trackTitle[b].innerText
             playerAlbum.innerText = trackAlbum[b].innerText
-
+            playTrack.addEventListener('click', function(){
+              if(audio[b].paused){
+                audio[b].play()
+                playerImg.style.animation = 'rotation 1s infinite'
+              }
+              else{
+                audio[b].pause()
+                playerImg.style.animation = 'none'
+              }
+            })
             
           })
         }
@@ -125,6 +136,7 @@ const fetcher = (array)=>{
   }
   
 }
+
 window.onload = () => {
   fetcher(playlists)
 }
