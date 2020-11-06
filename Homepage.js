@@ -12,7 +12,7 @@ logIN.onclick = function () {
 
 
 /*SELECTED HTML ELEMENTS */
-let listTitle = document.querySelectorAll('.spotify-text-secondary')
+let listTitle = document.querySelectorAll('.cover-title')
 let images = document.querySelectorAll('.covers .img-fluid')
 let result = document.getElementById('result')
 let play = document.querySelectorAll('.fa-play-circle')
@@ -24,9 +24,10 @@ let playTrack = document.getElementById('play')
 /* CREATE ELEMENTS */
 
 
-const playlistResult = (img) => {
+const playlistResult = (img, title) => {
   return result = `
     <img src='${img}' class='album-cover'/>
+    <h4>${title}</h4>
     <div class='row album-tracks'>
       <ul class='container track-list'></ul>
     </div>
@@ -55,8 +56,12 @@ let gaming = '2298075882'
 let goodVibes = '2268939442'
 let casaDePapel = '6257604024'
 let peakyBlinders = '6166124464'
+let topUsa = '8133897762'
+let topItaly = '579513551'
+let topWorldWide = '7484362524'
+let topParty = '2097558104'
 
-let playlists = [workout, coffe, gaming, goodVibes, casaDePapel, peakyBlinders]
+let playlists = [workout, coffe, gaming, goodVibes, casaDePapel, peakyBlinders, topUsa, topItaly, topWorldWide, topParty]
 
 let titleList = []
 let imgList = []
@@ -75,7 +80,7 @@ const fetcher = (array)=>{
     )
     .then(parsedJson => {
       console.log(parsedJson)
-      listTitle[(a+2)].innerText = parsedJson.title
+      listTitle[a].innerText = parsedJson.title
       images[a].src = parsedJson.picture_medium
 
       titleList = parsedJson.tracks.data
@@ -85,7 +90,8 @@ const fetcher = (array)=>{
 
       const clear = () => {
         result.innerHTML = ''
-        result.innerHTML = result.innerHTML + playlistResult(parsedJson.picture_xl)
+        result.style.alignItems = 'center'
+        result.innerHTML = result.innerHTML + playlistResult(parsedJson.picture_xl, parsedJson.title)
         let trackList = document.querySelector('.track-list')
         for(let c=0; c < titleList.length; c++){
           trackList.innerHTML = trackList.innerHTML + tracksList(titleList[c].title, titleList[c].album.cover_small, titleList[c].album.title, titleList[c].preview )
