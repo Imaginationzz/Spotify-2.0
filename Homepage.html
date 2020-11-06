@@ -20,6 +20,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="homepage.css" />
     <title>Strivefy</title>
   </head>
   <body style="background-color: #060c12">
@@ -42,7 +43,7 @@
               class="spotify-text-primary spotify-text-secondary d-flex flex-row pt-1"
             >
               <i class="fas fa-home mr-3"></i>
-              <h6></h6>
+              <h6>Home</h6>
             </span>
           </a>
           <a class="pl-4 mb-2" href="#">
@@ -81,7 +82,7 @@
         class="col-12 col-md-10 bg_grad"
         style="overflow-y: scroll; padding-bottom: 25%"
       >
-        <div class="container">
+        <div class="container" id="result">
           <nav class="navbar navbar-expand-lg navbar-dark">
             <button
               class="navbar-toggler"
@@ -546,10 +547,11 @@
         <div class="row" style="width: 25vw">
           <div class="col">
             <img
-              src="./assets/91Ph+uTyyxL._AC_SL1500_.jpg"
+              id="track-image"
               style="position: absolute; left: 10px; width: 8.5vh"
             />
             <div
+              id="track-title-player"
               style="
                 width: 200px;
                 position: absolute;
@@ -560,10 +562,9 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
               "
-            >
-              Bohemian Rapsody
-            </div>
+            ></div>
             <div
+              id="track-album-player"
               class="d-flex"
               style="
                 position: absolute;
@@ -571,9 +572,7 @@
                 top: 3.5vh;
                 font-size: 10pt;
               "
-            >
-              Queen
-            </div>
+            ></div>
           </div>
         </div>
       </div>
@@ -626,7 +625,7 @@
             border-radius: 50%;
             border-color: var(--playbar_light);
           "
-          onclick="playPause()"
+          id="play"
         >
           <svg
             width="1.2em"
